@@ -67,6 +67,7 @@ module Sidekiq
           process_one
         end
         @mgr.processor_stopped(self)
+        logger.info "Processor stopped normally."
       rescue Sidekiq::Shutdown
         @mgr.processor_stopped(self)
       rescue Exception => ex
