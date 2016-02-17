@@ -69,6 +69,7 @@ module Sidekiq
         @mgr.processor_stopped(self)
         logger.info "Processor stopped normally."
       rescue Sidekiq::Shutdown
+        logger.info "Receiving Sidekiq::Shutdown."
         @mgr.processor_stopped(self)
       rescue Exception => ex
         logger.warn "Exception: #{ex}"
