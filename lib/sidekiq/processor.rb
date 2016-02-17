@@ -70,6 +70,7 @@ module Sidekiq
       rescue Sidekiq::Shutdown
         @mgr.processor_stopped(self)
       rescue Exception => ex
+        logger.warn "Exception: #{ex}"
         @mgr.processor_died(self, ex)
       end
     end
